@@ -13,10 +13,14 @@ class DeviceNetwork:
     def scan_networks(self):
         networks = self.client.scan()
         
-        if len(networks)>0:
-            
-            return networks
-        if len(networks) == 0:
-            print("No Wifi network found..")
+
+        try:
+            if len(networks)>0:
+                
+                return networks
+            if len(networks) == 0:
+                print("No Wifi network found..")
+        except Exception as e:
+            print(f"An error occured during Wifi Scan: ",{e})
 
     
